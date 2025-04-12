@@ -6,23 +6,29 @@ namespace erpsystem.Server.Models.DTOs
     {
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "Produkt jest wymagany.")]
-        public int ProductId { get; set; }
+        [Required]
+        public int WarehouseItemId { get; set; }
 
-        [Required(ErrorMessage = "Nazwa produktu jest wymagana.")]
-        public string ProductName { get; set; }
+        [Required]
+        [StringLength(100)]
+        public string ItemName { get; set; }
 
-        [Range(0.01, double.MaxValue, ErrorMessage = "Ilość musi być większa od 0.")]
-        public decimal Quantity { get; set; }
+        [Required]
+        [Range(0.01, double.MaxValue)]
+        public int Quantity { get; set; }
 
-        [Range(0, double.MaxValue, ErrorMessage = "Cena jednostkowa netto musi być większa lub równa 0.")]
+        [Required]
+        [Range(0, double.MaxValue)]
         public decimal UnitPriceNet { get; set; }
 
+        [Range(0, double.MaxValue)]
         public decimal UnitPriceGross { get; set; }
 
-        [Range(0, 100, ErrorMessage = "Stawka VAT musi być między 0 a 100.")]
-        public decimal TaxRate { get; set; }
+        [Required]
+        [Range(0, 1)]
+        public decimal VatRate { get; set; }
 
+        [Range(0, 100)]
         public decimal Discount { get; set; }
     }
 }

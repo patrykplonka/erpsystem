@@ -11,23 +11,28 @@ namespace erpsystem.Server.Models
         public Order Order { get; set; }
 
         [Required]
-        public int WarhouseItemId { get; set; } 
-        public WarehouseItem WarehouseItem { get; set; } 
+        public int WarehouseItemId { get; set; }
+        public WarehouseItem WarehouseItem { get; set; }
 
         [Required]
-        public string ProductName { get; set; } 
+        [StringLength(100)]
+        public string ItemName { get; set; }
 
         [Required]
-        public decimal Quantity { get; set; } 
+        [Range(1, int.MaxValue)]
+        public int Quantity { get; set; } 
 
         [Required]
-        public decimal UnitPriceNet { get; set; } 
+        [Range(0, double.MaxValue)]
+        public decimal UnitPriceNet { get; set; }
 
-        public decimal UnitPriceGross { get; set; } 
+        public decimal UnitPriceGross { get; set; }
 
         [Required]
-        public decimal TaxRate { get; set; } 
+        [Range(0, 1)]
+        public decimal VatRate { get; set; }
 
-        public decimal Discount { get; set; } 
+        [Range(0, 100)]
+        public decimal Discount { get; set; }
     }
 }
